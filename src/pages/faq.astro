@@ -1,0 +1,14 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+const title = 'Frequently asked questions — Tanka';
+const description = 'Answers about the Tanka project, its development status, mining, wallets, and how to follow along.';
+const items = [
+  ['What is Tanka?', 'Tanka is an open-source cryptocurrency project developing an independent, mineable digital currency designed for everyday payments and community participation.'],
+  ['Is Tanka live?', 'No. Tanka is under development. The blockchain network, mining, wallet, exchange listings, and merchant payment services are not currently operational.'],
+  ['Can I buy or mine Tanka?', 'There is no operational Tanka network, mining program, or official exchange listing at this time. Be cautious of anyone claiming otherwise.'],
+  ['Is there an official wallet?', 'No official Tanka wallet is available yet.'],
+  ['When will Tanka launch?', 'No launch date is being announced. The project will share progress as development advances.'],
+  ['How can I follow the project?', 'Visit the public blockchain repository on GitHub to follow development and find ways to participate.'],
+];
+---
+<SiteLayout title={title} description={description} active="/faq/"><section class="container py-20 sm:py-28"><p class="eyebrow">FAQ</p><h1 class="display mt-5 text-5xl font-medium sm:text-7xl">Clear answers.<br /><span class="text-cyan">No guesswork.</span></h1><div class="mt-14 max-w-3xl divide-y divide-white/10">{items.map(([question, answer]) => <details class="group py-6"><summary class="flex cursor-pointer list-none items-center justify-between gap-5 text-lg font-medium"><span>{question}</span><span class="text-xl text-cyan transition-transform group-open:rotate-45">+</span></summary><p class="max-w-2xl pt-4 leading-7 text-silver/65">{answer}</p></details>)}</div></section></SiteLayout>
