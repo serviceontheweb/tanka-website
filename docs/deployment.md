@@ -9,8 +9,8 @@ Connect the `serviceontheweb/tanka-website` GitHub repository to Cloudflare Page
 - Root directory: `/`
 - Build command: `npm run build`
 - Build output directory: `dist`
-- Node.js: `22.14.0` (also recorded in `.node-version`)
-- Build environment: `NODE_VERSION=22.14.0`
+- Node.js: `22.23.4` (also recorded in `.node-version`)
+- Build environment: `NODE_VERSION=22.23.4`
 
 Pull requests should use Pages preview deployments. Merges or pushes to `main` trigger production deployments.
 
