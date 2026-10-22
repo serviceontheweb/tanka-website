@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+const { title, description, active = '' } = Astro.props;
+const links = [
+  { label: 'About', href: '/about/' }, { label: 'Technology', href: '/technology/' },
+  { label: 'Roadmap', href: '/roadmap/' }, { label: 'Community', href: '/community/' },
+  { label: 'FAQ', href: '/faq/' },
+];
+const canonical = new URL(Astro.url.pathname, 'https://tanka.money').toString();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tanka" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content="https://tanka.money/brand/open-graph-banner.png" />
+    <meta name="theme-color" content="#0B1933" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="site-shell min-h-screen">
+      <header class="relative z-20 border-b border-white/[.07]">
+        <div class="container flex h-[78px] items-center justify-between">
+          <a href="/" aria-label="Tanka home" class="block w-[126px]"><img src="/brand/logo-horizontal.svg" width="300" height="100" alt="Tanka — Mine it. Send it. Spend it." class="h-auto w-full" /></a>
+          <nav id="site-nav" aria-label="Main navigation" class="hidden items-center gap-8 md:flex">
+            {links.map((link) => <a class="nav-link text-[.78rem] font-medium" href={link.href} aria-current={active === link.href ? 'page' : undefined}>{link.label}</a>)}
+          </nav>
+          <a href="https://github.com/serviceontheweb/tanka" class="hidden md:inline-flex button-secondary !px-4 !py-2.5">Explore the project <span aria-hidden="true">↗</span></a>
+          <button id="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav" class="grid size-10 place-items-center rounded-full border border-white/15 text-xl text-silver md:hidden">☰</button>
+        </div>
+        <nav id="mobile-nav" aria-label="Mobile navigation" class="container hidden flex-col gap-4 pb-5 md:hidden">
+          {links.map((link) => <a class="nav-link text-sm" href={link.href} aria-current={active === link.href ? 'page' : undefined}>{link.label}</a>)}
+          <a href="https://github.com/serviceontheweb/tanka" class="nav-link text-sm">Explore the project ↗</a>
+        </nav>
+      </header>
+      <main><slot /></main>
+      <footer class="relative z-10 mt-24 border-t border-white/[.08]">
+        <div class="container flex flex-col gap-8 py-10 sm:flex-row sm:items-center sm:justify-between">
+          <div><img src="/brand/logo-horizontal.svg" alt="Tanka" width="300" height="100" class="mb-3 w-[100px]" /><p class="text-xs text-silver/55">An open project, built for everyday life.</p></div>
+          <nav aria-label="Legal and project links" class="flex flex-wrap gap-x-6 gap-y-3 text-xs text-silver/65"><a class="nav-link" href="/privacy/">Privacy</a><a class="nav-link" href="/terms/">Terms &amp; risk</a><a class="nav-link" href="https://github.com/serviceontheweb/tanka">Blockchain project ↗</a></nav>
+          <p class="text-xs text-silver/45">© {new Date().getFullYear()} Tanka contributors</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('#menu-toggle');
+      const mobileNav = document.querySelector<HTMLElement>('#mobile-nav');
+      toggle?.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
+        mobileNav?.classList.toggle('hidden', expanded);
+        mobileNav?.classList.toggle('flex', !expanded);
+      });
+    </script>
+  </body>
+</html>

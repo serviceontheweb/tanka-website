@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="300" height="100">
+    <rect width="100%" height="100%" fill="#0B1933" />
+    
+    <circle cx="50.0" cy="50.0" r="42.0" stroke="#12DCE6" stroke-width="6.0" fill="none" />
+    <path d="M 48.0,25.0 L 20.0,25.0 L 20.0,37.0 L 36.0,37.0 L 36.0,75.0 L 48.0,75.0 Z" fill="#12DCE6" />
+    <path d="M 52.0,25.0 L 80.0,25.0 L 80.0,37.0 L 64.0,37.0 L 64.0,75.0 L 52.0,75.0 Z" fill="#BAC8D6" />
+    <text x="120" y="65" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="48" fill="#12DCE6" text-anchor="start" letter-spacing="-1">tanka</text>
+    </svg>
